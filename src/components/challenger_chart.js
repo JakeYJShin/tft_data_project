@@ -1,5 +1,5 @@
 import React from "react";
-import challenger_data from "../challenger_info.json";
+import challenger_data from "/Users/jake/GitHub/tft-project/src/data/updated_challenger_info.json";
 
 class ChallengerInfo extends React.Component {
   constructor() {
@@ -34,7 +34,6 @@ class ChallengerInfo extends React.Component {
   }
 
   render() {
-    const challengerData = this.state.challengerData;
     return (
       <div>
         <table>
