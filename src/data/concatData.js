@@ -3,7 +3,15 @@
 
 const challenger_info = require("./challenger_info.json");
 const player_data = require("./player_data.json");
-const updated_challenger_info = require(".updated_challenger_info.json");
+const updated_challenger_info = require("./updated_challenger_info.json");
+const match_master_sheet = require("./match_master_sheet.json");
+
+console.log(match_master_sheet[0].Champions[8].Name);
+
+match_master_sheet[0].Champions;
+// Code below used for fixing match_master_sheet champions and traits field
+
+// Code below used for concatenating the data
 
 // var i = 0;
 
