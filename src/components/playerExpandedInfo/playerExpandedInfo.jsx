@@ -1,4 +1,5 @@
 import React from "react";
+import ChampionImage from "./historyChampionImage";
 
 function PlayerInfo(props) {
   return (
@@ -11,11 +12,10 @@ function PlayerInfo(props) {
           ({ Match_ID, Placement, Champions, Traits }, idx) => (
             <div key={idx}>
               <div>
-                {/* <h4>{Match_ID}</h4> */}
-                <h4>Placement</h4>
-                <h4>{Placement}</h4>
+                <h4>{Match_ID}</h4>
+                <h4>Placement: {Placement}</h4>
                 <h4>Champions</h4>
-                <h4>{loopThroughChampions(Champions)}</h4>
+                <h4>{renderChampionImage(Champions)}</h4>
                 {/* <h4>{Traits}</h4> */}
               </div>
             </div>
@@ -44,14 +44,24 @@ function getPlayerHistory(props) {
   });
 }
 
-function loopThroughChampions(champlist) {
-  var asdf = "";
+function sortChampionByTier(champlistarr) {
+  var temp = champlistarr.sort(function(champ1, champ2) {
+    return champ1.Tier - champ2.Tier;
+  });
+
+  return temp;
+}
+
+function renderChampionImage(champlist) {
+  sortChampionByTier(champlist);
+
+  var temp = [];
 
   for (let champobj of champlist) {
-    asdf = asdf.concat(JSON.stringify(champobj));
+    temp.push(<ChampionImage champion={champobj.Name} />);
   }
 
-  return asdf;
+  return temp;
 }
 
 export default PlayerInfo;
