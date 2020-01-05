@@ -1,18 +1,17 @@
 import React from "react";
 
 function PlayerInfo(props) {
-  console.log(props);
-  function retrievePlayerName(puuid) {
+  function getPlayerName(puuid) {
     for (var i = 0; i < props.challengerData.length; i++) {
-      if (props.challengerData[i].PUUID == puuid) {
+      if (props.challengerData[i].PUUID === puuid) {
         return props.challengerData[i].Summoner_Name;
       }
     }
   }
 
-  function retrievePlayerHistory(puuid) {
+  function getPlayerHistory(puuid) {
     return props.matchData.filter(function(playerInfo) {
-      if (playerInfo.PUUID == puuid) {
+      if (playerInfo.PUUID === puuid) {
         return true;
       } else {
         return false;
@@ -23,10 +22,10 @@ function PlayerInfo(props) {
   return (
     <div>
       <div>
-        {retrievePlayerHistory(props.puuid).map(({ PUUID, Match_ID }) => (
-          <div>
+        {getPlayerHistory(props.puuid).map(({ PUUID, Match_ID }, idx) => (
+          <div key={idx}>
             <div>
-              <h4>{retrievePlayerName(PUUID)}</h4>
+              <h4>{getPlayerName(PUUID)}</h4>
               <h4>{Match_ID}</h4>
             </div>
           </div>

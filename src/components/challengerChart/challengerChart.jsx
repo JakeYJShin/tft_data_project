@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-class ChallengerInfo extends React.Component {
+class ChallengerChart extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -56,7 +57,11 @@ class ChallengerInfo extends React.Component {
                 } = playerInfo;
                 return (
                   <tr key={Summoner_Name}>
-                    <td>{Summoner_Name}</td>
+                    <td>
+                      <Link to={`/player/${Summoner_Name}`}>
+                        {Summoner_Name}
+                      </Link>
+                    </td>
                     <td>{LP}</td>
                     <td>{Wins}</td>
                     <td>{Losses}</td>
@@ -74,4 +79,4 @@ class ChallengerInfo extends React.Component {
   }
 }
 
-export default ChallengerInfo;
+export default ChallengerChart;
